@@ -6,6 +6,7 @@
 
     <!--Toolbar-->
     <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbarRegister"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         android:background="@color/colorPrimary"
         android:layout_width="match_parent"
@@ -22,6 +23,7 @@
 
         <!--Avata-->
         <ImageView
+            android:id="@+id/imvAvata"
             android:layout_gravity="center_horizontal"
             android:src="@drawable/image"
             android:layout_width="wrap_content"
@@ -29,12 +31,14 @@
 
         <!--Name-->
         <EditText
-            android:background="@drawable/test1"
+            android:id="@+id/edtName"
+            android:background="@drawable/display_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <!--User-->
         <EditText
+            android:id="@+id/edtUser"
             android:background="@drawable/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -42,6 +46,7 @@
 
         <!--Password-->
         <EditText
+            android:id="@+id/edtPassword"
             android:background="@drawable/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
