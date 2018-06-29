@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import masterung.androidthai.in.th.srrufriend.R;
 
@@ -52,7 +53,7 @@ public class MainFragment extends Fragment {
     }
 
     private void alertMessage(String strMessage) {
-
+        Toast.makeText(getActivity(), strMessage, Toast.LENGTH_SHORT).show();
     }
 
     private void registerController() {
