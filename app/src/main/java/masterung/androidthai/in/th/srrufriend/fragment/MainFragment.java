@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +13,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+
 import masterung.androidthai.in.th.srrufriend.R;
+import masterung.androidthai.in.th.srrufriend.utility.ReadAllData;
 
 public class MainFragment extends Fragment {
 
@@ -44,6 +51,46 @@ public class MainFragment extends Fragment {
                 if (userString.isEmpty() || passwordString.isEmpty()) {
                     alertMessage("Please Fill All Every Blank");
                 } else {
+
+                    try {
+
+                        ReadAllData readAllData = new ReadAllData(getContext());
+                        readAllData.execute("http://androidthai.in.th/srru/getAllData.php");
+                        String jasonStrign = readAllData.get();
+                        Log.d("29JuneV1", "JSON ==> " + jasonStrign);
+
+                        String[] strings = new String[]{"id", "Name", "User", "Password", "Avata", "Post"};
+                        ArrayList<String> stringArrayList = new ArrayList<>();
+                        boolean b = true;
+
+                        JSONArray jsonArray = new JSONArray(jasonStrign);
+                        for (int i = 0; i < jsonArray.length(); i += 1) {
+                            JSONObject jsonObject = jsonArray.getJSONObject(i);
+                            if (userString.equals(jsonObject.getString("User"))) {
+                                b = false;
+                                for (int i1=0; i1<strings.length; i1+=1) {
+                                    stringArrayList.add(jsonObject.getString(strings[i1]));
+                                }
+                            }
+                        }
+
+                        Log.d("30JuneV1", "Login ==> " + stringArrayList.toString());
+
+                        if (b) {
+                            alertMessage("No " + userString + " in my Database");
+                        } else if (passwordString.equals(stringArrayList.get(3))) {
+                            alertMessage("Welcome " + stringArrayList.get(1));
+                            getActivity().getSupportFragmentManager()
+                                    .beginTransaction()
+                                    .replace(R.id.contentMainFragment, FriendFragment.friendInstant(stringArrayList))
+                                    .commit();
+                        } else {
+                            alertMessage("Please Try Again Password False");
+                        }
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
 
                 }
 

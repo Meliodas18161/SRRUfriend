@@ -28,4 +28,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation files('libs/ftp4j-1.7.2.jar')
     implementation 'com.squareup.okhttp:okhttp:2.0.0'
+    implementation 'com.android.support:recyclerview-v7:28.0.0-alpha3'
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
+    implementation 'com.squareup.picasso:picasso:2.71828'
 }

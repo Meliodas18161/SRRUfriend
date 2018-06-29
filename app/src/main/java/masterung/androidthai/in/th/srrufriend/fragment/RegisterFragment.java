@@ -140,7 +140,7 @@ public class RegisterFragment extends Fragment {
 
 //            upload Data to mySQL
             String nameAvata = pathAvataString.substring(pathAvataString.lastIndexOf("/"));
-            nameAvata = "http://androidthai.in.th/srru/" + nameAvata;
+            nameAvata = "http://androidthai.in.th/srru/Avata/" + nameAvata;
 
             try {
 

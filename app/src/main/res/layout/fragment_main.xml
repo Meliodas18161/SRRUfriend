@@ -6,7 +6,7 @@
 
     <!--Content-->
     <LinearLayout
-        android:background="#82ffffff"
+        android:background="#64000000"
         android:padding="30dp"
         android:orientation="vertical"
         android:layout_margin="@dimen/margin"
@@ -35,6 +35,8 @@
 
             <!--Text Field-->
             <EditText
+                android:textColorHint="#ffffff"
+                android:textColor="#ffffff"
                 android:id="@+id/edtUser"
                 android:hint="User :"
                 android:inputType="text"
@@ -59,9 +61,11 @@
 
             <!--Text Field-->
             <EditText
+                android:textColorHint="#ffffff"
+                android:textColor="#ffffff"
                 android:id="@+id/edtPassword"
                 android:hint="Password :"
-                android:inputType="text"
+                android:inputType="textPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
