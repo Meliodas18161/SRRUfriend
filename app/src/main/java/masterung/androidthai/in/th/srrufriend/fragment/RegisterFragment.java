@@ -137,6 +137,10 @@ public class RegisterFragment extends Fragment {
 
             } // try1
 
+//            upload Data to mySQL
+            String nameAvata = pathAvataString.substring(pathAvataString.lastIndexOf("/"));
+
+
         }   //if
 
     }   // upload
