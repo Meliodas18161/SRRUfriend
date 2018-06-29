@@ -51,6 +51,7 @@ public class RegisterFragment extends Fragment{
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+
         if (resultCode == getActivity().RESULT_OK) {
 
             uri = data.getData();
