@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -19,6 +20,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import it.sauronsoftware.ftp4j.FTPDataTransferListener;
 import masterung.androidthai.in.th.srrufriend.MainActivity;
 import masterung.androidthai.in.th.srrufriend.R;
 
@@ -80,10 +82,47 @@ public class RegisterFragment extends Fragment {
             alertMessage("Please Fill All Blank");
         } else {
 
+//            upload Image Avata
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy
+                    .Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+
+
+
         }
 
 
     }   // upload
+
+    public class MyUploadAvata implements FTPDataTransferListener{
+        @Override
+        public void started() {
+            alertMessage("Start Upload Avata");
+        }
+
+        @Override
+        public void transferred(int i) {
+            alertMessage("Continue Upload Avata");
+        }
+
+        @Override
+        public void completed() {
+            alertMessage("Success Upload Avata");
+        }
+
+        @Override
+        public void aborted() {
+
+        }
+
+        @Override
+        public void failed() {
+
+        }
+    }
+
+
+
 
     private void alertMessage(String strMessage) {
 
