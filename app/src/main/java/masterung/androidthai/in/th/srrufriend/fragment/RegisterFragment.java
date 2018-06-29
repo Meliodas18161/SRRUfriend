@@ -23,6 +23,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.io.File;
+
+import it.sauronsoftware.ftp4j.FTPClient;
 import it.sauronsoftware.ftp4j.FTPDataTransferListener;
 import masterung.androidthai.in.th.srrufriend.MainActivity;
 import masterung.androidthai.in.th.srrufriend.R;
@@ -111,10 +114,30 @@ public class RegisterFragment extends Fragment {
 
             Log.d("29JuneV1", "Path ==> " + pathAvataString);
 
+            File file = new File(pathAvataString);
+            FTPClient ftpClient = new FTPClient();
+
+            try {
+
+                ftpClient.connect("ftp.androidthai.in.th", 21);
+                ftpClient.login("srru@androidthai.in.th", "Abc12345");
+                ftpClient.setType(FTPClient.TYPE_BINARY);
+                ftpClient.changeDirectory("Avata");
+                ftpClient.upload(file, new MyUploadAvata());
 
 
-        }
+            } catch (Exception e) {
+                e.printStackTrace();
 
+                try {
+                    ftpClient.disconnect(true);
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
+
+            } // try1
+
+        }   //if
 
     }   // upload
 
