@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import masterung.androidthai.in.th.srrufriend.MainActivity;
 import masterung.androidthai.in.th.srrufriend.R;
@@ -73,6 +74,8 @@ public class RegisterFragment extends Fragment{
     }   // upload
 
     private void alertMessage(String strMessage) {
+
+        Toast.makeText(getActivity(), strMessage, Toast.LENGTH_SHORT).show();
 
     }
 
