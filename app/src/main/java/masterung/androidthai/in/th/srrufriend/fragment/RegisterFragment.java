@@ -152,6 +152,16 @@ public class RegisterFragment extends Fragment {
                         nameAvata,
                         "http://androidthai.in.th/srru/addData.php");
 
+                if (Boolean.parseBoolean(addUser.get())) {
+
+                    getActivity().getSupportFragmentManager().popBackStack();
+
+                } else {
+
+                    alertMessage("Cannot Upload");
+
+                }
+
 
 
             } catch (Exception e) {
