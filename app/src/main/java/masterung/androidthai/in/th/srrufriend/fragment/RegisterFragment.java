@@ -15,13 +15,14 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import masterung.androidthai.in.th.srrufriend.MainActivity;
 import masterung.androidthai.in.th.srrufriend.R;
 
-public class RegisterFragment extends Fragment{
+public class RegisterFragment extends Fragment {
 
     private ImageView imageView;
     private Uri uri;
@@ -65,10 +66,21 @@ public class RegisterFragment extends Fragment{
 
     private void uploadValueToServer() {
 
+        EditText nameEditText = getView().findViewById(R.id.edtName);
+        EditText userEditText = getView().findViewById(R.id.edtUser);
+        EditText passwordEditText = getView().findViewById(R.id.edtPassword);
+
+        String nameString = nameEditText.getText().toString().trim();
+        String userString = userEditText.getText().toString().trim();
+        String passwordString = passwordEditText.getText().toString().trim();
+
         if (aBoolean) {
             alertMessage("Non Choose Avata");
-        }
+        } else if (nameString.isEmpty() || userString.isEmpty() || passwordString.isEmpty()) {
+            alertMessage("Please Fill All Blank");
+        } else {
 
+        }
 
 
     }   // upload
@@ -116,7 +128,7 @@ public class RegisterFragment extends Fragment{
 
     private void createToolbar() {
         Toolbar toolbar = getView().findViewById(R.id.toolbarRegister);
-        ((MainActivity)getActivity()).setSupportActionBar(toolbar);
+        ((MainActivity) getActivity()).setSupportActionBar(toolbar);
 
         ((MainActivity) getActivity()).getSupportActionBar().setTitle("Register");
 
