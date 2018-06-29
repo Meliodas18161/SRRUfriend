@@ -12,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -23,6 +24,7 @@ public class RegisterFragment extends Fragment{
 
     private ImageView imageView;
     private Uri uri;
+    private boolean aBoolean = true;
 
 
     @Override
@@ -49,10 +51,36 @@ public class RegisterFragment extends Fragment{
     }   // Main Method
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if (item.getItemId() == R.id.itmeUpload) {
+
+            uploadValueToServer();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void uploadValueToServer() {
+
+        if (aBoolean) {
+            alertMessage("Non Choose Avata");
+        }
+
+
+
+    }   // upload
+
+    private void alertMessage(String strMessage) {
+
+    }
+
+    @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
 
-
+        inflater.inflate(R.menu.menu_register, menu);
 
     }
 
@@ -64,6 +92,7 @@ public class RegisterFragment extends Fragment{
         if (resultCode == getActivity().RESULT_OK) {
 
             uri = data.getData();
+            aBoolean = false;
 
             try {
 
