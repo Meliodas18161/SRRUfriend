@@ -58,7 +58,11 @@ public class RegisterFragment extends Fragment{
             try {
 
                 Bitmap bitmap = BitmapFactory.decodeStream(getActivity().getContentResolver().openInputStream(uri));
-                imageView.setImageBitmap(bitmap);
+
+                Bitmap bitmap1 = Bitmap.createScaledBitmap(bitmap, 800, 600, true);
+
+
+                imageView.setImageBitmap(bitmap1);
 
             } catch (Exception e) {
                 e.printStackTrace();
