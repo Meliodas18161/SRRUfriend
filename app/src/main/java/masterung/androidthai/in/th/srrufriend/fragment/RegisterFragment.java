@@ -1,15 +1,18 @@
 package masterung.androidthai.in.th.srrufriend.fragment;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -86,6 +89,27 @@ public class RegisterFragment extends Fragment {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy
                     .Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
+
+            String[] strings = new String[]{MediaStore.Images.Media.DATA};
+            Cursor cursor = getActivity().getContentResolver()
+                    .query(uri, strings, null, null, null);
+
+            String pathAvataString = null;
+
+            if (cursor != null) {
+
+                cursor.moveToFirst();
+                int index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+                pathAvataString = cursor.getString(index);
+
+            } else {
+
+                pathAvataString = uri.getPath();
+
+            }
+
+
+            Log.d("29JuneV1", "Path ==> " + pathAvataString);
 
 
 
