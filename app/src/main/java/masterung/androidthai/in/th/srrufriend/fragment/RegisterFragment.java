@@ -29,6 +29,7 @@ import it.sauronsoftware.ftp4j.FTPClient;
 import it.sauronsoftware.ftp4j.FTPDataTransferListener;
 import masterung.androidthai.in.th.srrufriend.MainActivity;
 import masterung.androidthai.in.th.srrufriend.R;
+import masterung.androidthai.in.th.srrufriend.utility.AddUser;
 
 public class RegisterFragment extends Fragment {
 
@@ -139,7 +140,23 @@ public class RegisterFragment extends Fragment {
 
 //            upload Data to mySQL
             String nameAvata = pathAvataString.substring(pathAvataString.lastIndexOf("/"));
+            nameAvata = "http://androidthai.in.th/srru/" + nameAvata;
 
+            try {
+
+                AddUser addUser = new AddUser(getActivity());
+                addUser.execute(
+                        nameString,
+                        userString,
+                        passwordString,
+                        nameAvata,
+                        "http://androidthai.in.th/srru/addData.php");
+
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
         }   //if
 
