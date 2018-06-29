@@ -10,6 +10,8 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -46,6 +48,13 @@ public class RegisterFragment extends Fragment{
 
     }   // Main Method
 
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+
+
+
+    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -88,6 +97,11 @@ public class RegisterFragment extends Fragment{
                 getActivity().getSupportFragmentManager().popBackStack();
             }
         });
+
+
+        setHasOptionsMenu(true);
+
+
     }
 
     @Nullable
